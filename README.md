@@ -1,15 +1,50 @@
 # Desafio Clean Code com Fila e API de Cotação
 
-## Objetivo
+## 🧠 Objetivo
 
 Você deve criar um microserviço que:
 
-1. Leia uma mensagem JSON de uma fila (simulada por `queue_request.json`)
-2. Chame a API de cotação de moeda do BrasilAPI
-3. Calcule o valor do pedido na moeda especificada
-4. Publique uma nova mensagem (em `queue_response.json`) com a cotação e o valor convertido
+1. Criar a lógica de cálculo da cotação de um pedido.
+2. Usar a resposta da **BrasilAPI** para converter BRL para outra moeda.
+3. Publicar a resposta formatada em uma fila (presente no projeto).
+4. Aplicar boas práticas de código limpo e testabilidade.
+
+---
+
+
+## ⚖️ Regras de Negócio
+
+1.  Todos os dias possuem 3 registros com a propriedade tipo_cotacao igual a **INTERMEDIÁRIO**
+- Quando o tipo de boletim da mensagem de entrada for INTERMEDIÁRIO, o cálculo da cotação do pedido deverá considerar a média de valor dos registros intermediários do dia.
+
+---
+
+## 🧱 Estrutura entregue no desafio
+
+O repositório inicial já contém:
+
+- 🔗 Chamada à BrasilAPI implementada
+- ✅ Modelos de entrada/saída já definidos (ou a serem criados)
+- ❌ **Lógica de cálculo não implementada**
+- ❌ **MessageHandler ausente**
+- ❌ **Testes ausentes**
+
+---
+
+## 🧩 O que devem entregar
+
+- Implementação da classe que processa a mensagem (`MessageHandler`)
+- Aplicação das regras de negócio baseadas no tipo de boletim
+- Cálculo correto do valor convertido com base na cotação recebida
+- Mensagem de resposta formatada corretamente
+- Testes automatizados (mínimo esperado)
+
+---
+
 
 ## Mensagem de entrada
+
+Veja abaixo exemplos de retorno da API:
 
 ```json
 {
